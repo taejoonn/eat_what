@@ -1,0 +1,6 @@
+Implement user database for user preference on certain restaurants
+- user would have a simple choice to alter their rating of a restaurant when a run completes
+    - a choice of 'Not right now' or 'I hate this place'
+    - rating is saved to db and affects future runs as every run would load user preference/ratings
+
+Implement a delivery option

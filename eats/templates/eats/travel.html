@@ -1,0 +1,62 @@
+{% extends "header-footer.html" %}
+
+{% block content %}
+<style>
+    .center {
+        margin: auto;
+        width: 70%;
+        padding: 10px
+    }
+
+    .btn-primary {
+        float: right;
+        background-color: #9939beb6;
+    }
+
+    .rad {
+        margin-left: 40px;
+        background-color: #9939beb6;
+    }
+</style>
+
+
+<div class="center">
+    <h1>Context</h1>
+    <div class="travel-distance">
+        <form action="{% url 'spin' %}" method="post" id='form'>{% csrf_token %}
+            <label><input type="radio" name="radopt" value="11" checked> 10+ miles</label>
+            <br>
+            <label><input type="radio" name="radopt" value="10"> 10 miles</label>
+            <br>
+            <label><input type="radio" name="radopt" value="5"> 5 miles</label>
+            <br>
+            <label><input type="radio" name="radopt" value="3"> 3 miles</label>
+            <br>
+            <label><input type="radio" name="radopt" value="1"> 1 mile</label>
+            <br>
+            <label><input type="radio" name="radopt" value="0"> &lt;1 mile</label>
+            <br>
+            <label><input type="hidden" name="location" id="loca" value="0"></label>
+            
+        </form>
+        <button class="btn btn-primary" onclick="getLocation()">Submit</button>
+    </div>
+</div>
+
+<script>
+    function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        document.getElementById("loca").value = "None";
+        document.forms["form"].submit();
+    }
+   }
+
+    function showPosition(position) {
+        document.getElementById("loca").value = position.coords.latitude + "," + position.coords.longitude;
+        document.forms["form"].submit();
+    }
+</script>
+
+{% endblock %}

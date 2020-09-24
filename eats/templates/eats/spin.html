@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load static %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/spin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="spinContainer">
+        <div class="line"></div>
+        
+        <div id="testcontainer" class="spin">
+			<div><h3> </h3></div>
+			
+            {% with roundz='{{rounds}}' %}
+            {% for round in roundz %}
+                {% for name in pname %}
+                <div>
+                    <h3 style="background-color:purple";>
+                        {{name}}
+                    </h3>
+                </div>
+                {% endfor %}
+            {% endfor %}
+            {% endwith %}
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
+
+	<center>
+    <div>
+		<button id="startButt" onclick="start()">Start</button>
+	</div>
+	</center>
+</body>
+
+<script>
+	function rand(min, max) {
+		return Math.floor(Math.random() * (max - min)) + min;
+	}
+
+    function start() {
+        var amountOfBoxes = 100;
+        var csrftoken = '{{ csrf_token }}';
+
+		var offset = rand(0, amountOfBoxes * 140 -180) + 180;
+		document.getElementById("testcontainer").style.left = -(offset - 180) + "px";
+
+		// divide sections by div width
+		var chosen = Math.ceil((Math.abs(offset)) / 140) %10;
+        if (chosen == 0)
+            chosen = 10;
+        chosen -= 1;
+
+		// get the innerhtml of resulting place
+        var resty = document.getElementById("testcontainer").children[chosen].children[0].innerHTML;
+        
+        $.ajax({
+            url : "print",
+            type: "POST",
+            data : {
+                csrfmiddlewaretoken: csrftoken,
+                winner: resty
+            },
+            dataType : "json",
+            success: function( data ){
+                $("#result").html(data);
+			}
+        });
+    }
+</script>
+
+</html>

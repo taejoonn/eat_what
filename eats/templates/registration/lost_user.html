@@ -1,0 +1,36 @@
+{% extends "header-footer.html" %}
+
+{% block content %}
+<style>
+.center {
+    margin: auto;
+    width: 70%;
+    padding: 10px
+}
+.btn-primary {
+    float: right;
+    background-color: #9939beb6;
+}
+</style>
+
+
+<div class="center">
+    <h1>Forgot Username</h1>
+    <br/><br/>
+
+    {% if signal == 400 %}
+        <p style='color:red;'>Invalid Email Address</p>
+    {% endif %}
+
+    <h3>Email</h3>
+    <br/><br/>
+
+    <form action="{% url 'send_user' %}" method="post">
+        <input type="text" name="email" placeholder="Email">
+        <br/><br/>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+{% endblock %}

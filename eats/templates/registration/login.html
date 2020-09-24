@@ -1,0 +1,40 @@
+{% extends "header-footer.html" %}
+
+{% block content %}
+
+<style>
+.center {
+    margin: auto;
+    width: 70%;
+    padding: 10px
+}
+.btn-primary {
+    float: right;
+    background-color: #9939beb6;
+}
+</style>
+
+<div class="center">
+    <h1>Login</h1>
+    <br/><br/>
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+
+        <h3>Username</h3>
+        <input type="text" name="username" placeholder="Username">
+        <br/><br/>
+
+        <h3>Password</h3>
+        <input type="text" name="password" placeholder="Password">
+        <br/><br/>
+
+        <!-- <input type="hidden" name="next" value="{{ request.path }}"> -->
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+
+        <p><a href="{% url 'lost_user' %}">Forgot Username</a></p>
+        <p><a href="{% url 'lost_pass' %}">Forgot Password?</a></p>
+        <p><a href="{% url 'register' %}">Create an account</a></p>
+</div>
+{% endblock %}
