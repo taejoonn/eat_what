@@ -32,7 +32,11 @@
     <div>
 		<button id="startButt" onclick="start()">Start</button>
 	</div>
-	</center>
+    </center>
+    
+    <form id="ret_form" action="{% url 'result' %}" method="post">{% csrf_token %}
+
+    </form>
 </body>
 
 <script>
@@ -56,18 +60,30 @@
 		// get the innerhtml of resulting place
         var resty = document.getElementById("testcontainer").children[chosen].children[0].innerHTML;
         
-        $.ajax({
-            url : "print",
-            type: "POST",
-            data : {
-                csrfmiddlewaretoken: csrftoken,
-                winner: resty
-            },
-            dataType : "json",
-            success: function( data ){
-                $("#result").html(data);
-			}
-        });
+        // $.ajax({
+        //     url : "result",
+        //     type: "POST",
+        //     data : {
+        //         csrfmiddlewaretoken: csrftoken,
+        //         winner: resty
+        //     },
+        //     dataType : "json",
+        //     success: function( data ){
+        //         $("#result").html(data);
+		// 	}
+        // });
+
+        // $.post("{% url 'result' %}", {
+        //     csrfmiddlewaretoken: csrftoken,
+        //     winner: resty
+        // });
+        // alert(resty);
+        var input = document.createElement("INPUT");
+        input.setAttribute("name", "winner");
+        input.setAttribute("type", "hidden");
+        input.setAttribute("value", resty);
+        document.getElementById("ret_form").appendChild(input);
+        document.getElementById("ret_form").submit();
     }
 </script>
 

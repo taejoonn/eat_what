@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
     
     <!-- <link href='css/style.css' type="text/css" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
@@ -16,10 +17,10 @@
 <header>
     {% load static %}
     <ul>
-        <li class="logo">EAT WHAT</li>
-        <li><a class="active" href="{% url 'home' %}"><Strong>Home</Strong></a></li>
-        <li><a href="#contact"><Strong>About</Strong></a></li>
-        <li style="float:right"><a href="{% url 'login' %}"><Strong>Log in</Strong></a></li>
+        <li class="logo head">EAT WHAT</li>
+        <li><a class="active head" href="{% url 'home' %}"><Strong>Home</Strong></a></li>
+        <!-- <li><a href="#contact"><Strong>About</Strong></a></li> -->
+        <li style="float:right"><a class="head" href="{% url 'login' %}"><Strong>Log in</Strong></a></li>
     </ul>
 </header>
 

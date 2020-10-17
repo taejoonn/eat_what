@@ -1,6 +1,6 @@
 Eat What
 
-A basic web app which chooses a random restaurant to eat, near the user.
+A web app which chooses a random local restaurant to eat and displays their information and menu.
 
 
 --------------------------------
@@ -35,3 +35,10 @@ In the project directory "/eat-what":
 
 In your browser, enter:
     localhost:8000/eats
+
+
+--------------------------------
+            FUTURE
+--------------------------------
+- Integrate food courier services
+- Integrate more Yelp restaurant information - e.g. review, hours, rating
