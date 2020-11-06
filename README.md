@@ -42,3 +42,7 @@ In your browser, enter:
 --------------------------------
 - Integrate food courier services
 - Integrate more Yelp restaurant information - e.g. review, hours, rating
+
+Demo:
+
+![Image of demo gif](https://github.com/taejoonn/eat_what/blob/master/static/img/eat-what-demo.gif)
