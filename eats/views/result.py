@@ -15,7 +15,7 @@ def result(request):
     # open and read user data from text file
     filePath = os.path.join(settings.STATICFILES_DIRS[0], "user_data.txt")
     user_data = read_pickle(filePath)  
-
+    print(user_data["lat_lng"])
     # find the google place nearby again
     googResults = goog_place(user_data["lat_lng"], user_data["radius"]).places
 
@@ -41,7 +41,6 @@ def result(request):
     filter_menu(soup)
     allResults = soup.findAll(class_="menu-sections")
     
-    print(allResults)
     if (allResults is None):
         menu_url = None
 
